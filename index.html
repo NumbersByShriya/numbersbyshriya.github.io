@@ -4,88 +4,293 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shriya Kulkarni — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0f1117;
-    --bg-alt:#171a23;
-    --card:#1b1e29;
-    --border:#2a2e3d;
-    --text:#eef0f5;
-    --text-dim:#9aa1b2;
+    --bg:#0a0b10;
+    --bg-alt:#131520;
+    --card:#151725;
+    --card-hover:#191c2d;
+    --border:#262a3d;
+    --border-soft:#1b1e2c;
+    --text:#f4f5fa;
+    --text-dim:#a2a8bd;
+    --text-faint:#666c85;
     --accent:#7c9cff;
-    --accent-soft:#7c9cff22;
-    --radius:14px;
-    --maxw:1000px;
+    --accent-2:#a78bfa;
+    --accent-3:#f472b6;
+    --accent-soft:rgba(124,156,255,0.14);
+    --radius-lg:22px;
+    --radius-md:14px;
+    --radius-sm:8px;
+    --maxw:1100px;
+
+    --python:#3fa7ff;
+    --java:#ff9f45;
+    --js:#facc15;
+    --cpp:#60a5fa;
+    --web:#f472b6;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--bg);
+    background:
+      radial-gradient(1000px 560px at 10% -12%, rgba(124,156,255,0.20), transparent 55%),
+      radial-gradient(800px 560px at 100% -8%, rgba(244,114,182,0.14), transparent 55%),
+      radial-gradient(900px 700px at 50% 110%, rgba(167,139,250,0.12), transparent 60%),
+      var(--bg);
+    background-attachment:fixed;
     color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk','Inter',sans-serif;
+    letter-spacing:-0.02em;
   }
   a{color:var(--accent); text-decoration:none;}
-  a:hover{text-decoration:underline;}
+  a:hover{color:#a9bfff;}
 
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
 
+  /* ---------- Nav ---------- */
+  nav.topnav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    backdrop-filter:blur(12px);
+    background:rgba(10,11,16,0.7);
+    border-bottom:1px solid var(--border-soft);
+  }
+  nav.topnav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+    color:var(--text);
+    letter-spacing:-0.01em;
+  }
+  .brand .brand-mark{
+    width:26px; height:26px;
+    border-radius:8px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-3));
+    display:inline-block;
+  }
+  .navlinks{
+    display:flex;
+    gap:28px;
+    font-size:0.92rem;
+  }
+  .navlinks a{color:var(--text-dim); font-weight:500;}
+  .navlinks a:hover{color:var(--text);}
+
+  /* ---------- Hero ---------- */
   header.hero{
-    padding:72px 0 40px;
-    border-bottom:1px solid var(--border);
+    padding:100px 0 60px;
+    position:relative;
+  }
+  .avatar{
+    width:84px;
+    height:84px;
+    border-radius:24px;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.9rem;
+    color:#0a0b10;
+    margin-bottom:28px;
+    box-shadow:0 10px 40px rgba(124,156,255,0.35), 0 0 0 6px rgba(124,156,255,0.08);
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:#8fe3b0;
+    background:rgba(74,222,128,0.10);
+    border:1px solid rgba(74,222,128,0.3);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow .pulse{
+    width:7px; height:7px; border-radius:50%;
+    background:#4ade80;
+    box-shadow:0 0 0 0 rgba(74,222,128,0.6);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(74,222,128,0.55);}
+    70%{box-shadow:0 0 0 8px rgba(74,222,128,0);}
+    100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}
   }
   .hero h1{
-    font-size:2.4rem;
-    margin:0 0 8px;
-    letter-spacing:-0.02em;
+    font-size:3.2rem;
+    font-weight:700;
+    margin:0 0 18px;
+    line-height:1.08;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(100deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
   }
   .hero p.tagline{
     color:var(--text-dim);
-    font-size:1.1rem;
+    font-size:1.15rem;
     max-width:640px;
-    margin:0 0 20px;
+    margin:0 0 32px;
   }
   .hero .links{
     display:flex;
-    gap:16px;
+    gap:12px;
     flex-wrap:wrap;
-    font-size:0.95rem;
+    font-size:0.92rem;
+    margin-bottom:48px;
   }
   .hero .links a{
-    padding:6px 14px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:10px 20px;
     border:1px solid var(--border);
     border-radius:999px;
     color:var(--text);
+    font-weight:500;
+    transition:all .18s ease;
+    background:var(--bg-alt);
   }
   .hero .links a:hover{
     border-color:var(--accent);
     color:var(--accent);
-    text-decoration:none;
+    transform:translateY(-2px);
+  }
+  .hero .links a.primary{
+    background:linear-gradient(100deg, var(--accent), var(--accent-2));
+    border-color:transparent;
+    color:#0a0b10;
+    font-weight:600;
+    box-shadow:0 6px 20px rgba(124,156,255,0.3);
+  }
+  .hero .links a.primary:hover{
+    filter:brightness(1.08);
+    transform:translateY(-2px);
+    color:#0a0b10;
   }
 
-  section{padding:48px 0;}
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(3, auto);
+    gap:40px;
+    padding-top:32px;
+    border-top:1px solid var(--border-soft);
+    max-width:520px;
+  }
+  .stat-row .stat-num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.8rem;
+    font-weight:700;
+    color:var(--text);
+  }
+  .stat-row .stat-label{
+    font-size:0.8rem;
+    color:var(--text-faint);
+    margin-top:2px;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:68px 0;}
+  section + section{border-top:1px solid var(--border-soft);}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:32px;
+  }
   section h2{
-    font-size:1.4rem;
-    margin:0 0 20px;
+    font-size:1.7rem;
+    font-weight:700;
+    margin:0;
+  }
+  .section-sub{
+    color:var(--text-dim);
+    font-size:0.95rem;
+    max-width:520px;
   }
 
-  /* Filters */
+  /* ---------- Skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:14px;
+  }
+  .skill-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-top:3px solid var(--sc, var(--accent));
+    border-radius:var(--radius-md);
+    padding:20px;
+    text-align:left;
+    transition:border-color .15s ease, transform .15s ease, background .15s ease;
+  }
+  .skill-card:hover{
+    transform:translateY(-3px);
+    background:var(--card-hover);
+  }
+  .skill-card .icon{
+    font-size:1.5rem;
+    margin-bottom:10px;
+    display:block;
+  }
+  .skill-card h4{
+    margin:0 0 4px;
+    font-size:1rem;
+    font-weight:600;
+  }
+  .skill-card p{
+    margin:0;
+    font-size:0.82rem;
+    color:var(--text-faint);
+  }
+
+  /* ---------- Filters ---------- */
   .filters{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
-    margin-bottom:28px;
+    margin-bottom:32px;
   }
   .filter-btn{
     background:var(--bg-alt);
     border:1px solid var(--border);
     color:var(--text-dim);
-    padding:7px 16px;
+    padding:8px 18px;
     border-radius:999px;
-    font-size:0.9rem;
+    font-size:0.88rem;
+    font-weight:500;
     cursor:pointer;
     transition:all .15s ease;
+    font-family:inherit;
   }
   .filter-btn:hover{
     color:var(--text);
@@ -97,95 +302,235 @@
     color:var(--accent);
   }
 
-  /* Project grid */
+  /* ---------- Project grid ---------- */
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:22px;
   }
   .card{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:22px;
+    border-radius:var(--radius-lg);
+    padding:26px;
     display:flex;
     flex-direction:column;
-    transition:transform .15s ease, border-color .15s ease;
+    position:relative;
+    overflow:hidden;
+    transition:transform .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:4px;
+    background:var(--pc, linear-gradient(90deg, var(--accent), var(--accent-2)));
   }
   .card:hover{
-    transform:translateY(-3px);
-    border-color:var(--accent);
+    transform:translateY(-5px);
+    border-color:rgba(124,156,255,0.4);
+    background:var(--card-hover);
+  }
+  .card-icon{
+    font-size:1.6rem;
+    margin-bottom:14px;
+    display:inline-block;
   }
   .card h3{
-    margin:0 0 8px;
-    font-size:1.1rem;
+    margin:0 0 10px;
+    font-size:1.18rem;
+    font-weight:600;
   }
   .card p.desc{
     color:var(--text-dim);
     font-size:0.92rem;
-    margin:0 0 16px;
+    margin:0 0 18px;
     flex-grow:1;
   }
   .tags{
     display:flex;
     flex-wrap:wrap;
     gap:6px;
-    margin-bottom:16px;
+    margin-bottom:18px;
   }
   .tag{
-    font-size:0.72rem;
+    font-size:0.7rem;
+    font-weight:700;
     text-transform:uppercase;
-    letter-spacing:0.03em;
-    background:var(--bg-alt);
-    color:var(--text-dim);
-    border:1px solid var(--border);
-    padding:3px 9px;
+    letter-spacing:0.04em;
+    padding:4px 10px;
     border-radius:6px;
+    border:1px solid transparent;
   }
+  .tag.python{color:var(--python); background:rgba(63,167,255,0.12); border-color:rgba(63,167,255,0.3);}
+  .tag.java{color:var(--java); background:rgba(255,159,69,0.12); border-color:rgba(255,159,69,0.3);}
+  .tag.js{color:var(--js); background:rgba(250,204,21,0.12); border-color:rgba(250,204,21,0.3);}
+  .tag.cpp{color:var(--cpp); background:rgba(96,165,250,0.12); border-color:rgba(96,165,250,0.3);}
+  .tag.web{color:var(--web); background:rgba(244,114,182,0.12); border-color:rgba(244,114,182,0.3);}
+
   .card-links{
     display:flex;
-    gap:14px;
+    gap:18px;
     font-size:0.88rem;
-    border-top:1px solid var(--border);
-    padding-top:14px;
+    font-weight:500;
+    border-top:1px solid var(--border-soft);
+    padding-top:16px;
   }
+  .card-links a{display:inline-flex; align-items:center; gap:4px;}
   .hidden{display:none !important;}
-
-  footer{
-    border-top:1px solid var(--border);
-    padding:32px 0 60px;
-    color:var(--text-dim);
-    font-size:0.88rem;
-    text-align:center;
-  }
 
   .empty-msg{
     color:var(--text-dim);
     font-size:0.95rem;
-    padding:20px 0;
+    padding:24px 0;
     display:none;
+  }
+
+  /* ---------- Contact / Footer ---------- */
+  .contact-card{
+    background:
+      radial-gradient(500px 260px at 20% 0%, rgba(124,156,255,0.14), transparent 60%),
+      radial-gradient(500px 260px at 90% 100%, rgba(244,114,182,0.12), transparent 60%),
+      var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:48px;
+    text-align:center;
+  }
+  .contact-card h2{margin:0 0 12px; font-size:1.8rem;}
+  .contact-card p{
+    color:var(--text-dim);
+    max-width:480px;
+    margin:0 auto 28px;
+  }
+  .contact-card .links{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .contact-card .links a{
+    padding:10px 22px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.92rem;
+    transition:transform .15s ease;
+  }
+  .contact-card .links a:hover{transform:translateY(-2px);}
+  .contact-card .links a.primary{
+    background:linear-gradient(100deg, var(--accent), var(--accent-2));
+    color:#0a0b10;
+    box-shadow:0 6px 20px rgba(124,156,255,0.3);
+  }
+  .contact-card .links a.ghost{
+    border:1px solid var(--border);
+    color:var(--text);
+  }
+
+  footer.site-footer{
+    padding:32px 0 48px;
+    color:var(--text-faint);
+    font-size:0.85rem;
+    text-align:center;
+  }
+
+  @media (max-width:640px){
+    .hero h1{font-size:2.3rem;}
+    header.hero{padding:64px 0 48px;}
+    section{padding:48px 0;}
+    .contact-card{padding:30px;}
+    .stat-row{gap:24px;}
   }
 </style>
 </head>
 <body>
 
+<nav class="topnav">
+  <div class="wrap">
+    <div class="brand"><span class="brand-mark"></span>Shriya Kulkarni</div>
+    <div class="navlinks">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
 <header class="hero">
   <div class="wrap">
-    <h1>Shriya Kulkarni</h1>
+    <div class="avatar">SK</div>
+    <span class="eyebrow"><span class="pulse"></span>Open to opportunities</span>
+    <h1>Building across languages,<br><span class="grad">one project at a time.</span></h1>
     <p class="tagline">
-      I build things across multiple languages — currently learning Python, and expanding into
-      Java, JavaScript, and beyond. This page collects projects as I make them.
+      I'm currently learning Python and expanding into Java, JavaScript, and beyond.
+      This page collects what I build along the way — real code, real projects, growing over time.
     </p>
     <div class="links">
-      <a href="https://github.com/YOUR-USERNAME" target="_blank">GitHub</a>
+      <a class="primary" href="https://github.com/shriyakulkarni" target="_blank">View GitHub →</a>
       <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a>
       <a href="mailto:kulkarnishriya468@gmail.com">Email</a>
+    </div>
+    <div class="stat-row">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Languages exploring</div>
+      </div>
+      <div>
+        <div class="stat-num">2026</div>
+        <div class="stat-label">Learning since</div>
+      </div>
+      <div>
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Curiosity level</div>
+      </div>
     </div>
   </div>
 </header>
 
+<section class="wrap" id="skills">
+  <div class="section-head">
+    <h2>Languages &amp; Tools</h2>
+    <p class="section-sub">What I'm learning and building with right now.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card" style="--sc:var(--python)">
+      <span class="icon">🐍</span>
+      <h4>Python</h4>
+      <p>Core focus — scripting, automation, fundamentals</p>
+    </div>
+    <div class="skill-card" style="--sc:var(--java)">
+      <span class="icon">☕</span>
+      <h4>Java</h4>
+      <p>OOP fundamentals and problem solving</p>
+    </div>
+    <div class="skill-card" style="--sc:var(--js)">
+      <span class="icon">⚡</span>
+      <h4>JavaScript</h4>
+      <p>Web basics — DOM, interactivity</p>
+    </div>
+    <div class="skill-card" style="--sc:var(--cpp)">
+      <span class="icon">⚙️</span>
+      <h4>C++</h4>
+      <p>Data structures &amp; logic building</p>
+    </div>
+    <div class="skill-card" style="--sc:var(--web)">
+      <span class="icon">🎨</span>
+      <h4>HTML / CSS</h4>
+      <p>Structuring and styling the web</p>
+    </div>
+    <div class="skill-card" style="--sc:var(--accent)">
+      <span class="icon">🔧</span>
+      <h4>Git &amp; GitHub</h4>
+      <p>Version control and collaboration</p>
+    </div>
+  </div>
+</section>
+
 <section class="wrap" id="projects">
-  <h2>Projects</h2>
+  <div class="section-head">
+    <h2>Projects</h2>
+    <p class="section-sub">Filter by language to browse what I've built.</p>
+  </div>
 
   <div class="filters" id="filters">
     <button class="filter-btn active" data-filter="all">All</button>
@@ -198,62 +543,66 @@
 
   <div class="grid" id="grid">
 
-    <!-- PROJECT CARD TEMPLATE — copy this block for each new project -->
-    <div class="card" data-tags="python">
+    <div class="card" data-tags="python" style="--pc:var(--python)">
+      <span class="card-icon">🐍</span>
       <h3>Project Title</h3>
       <p class="desc">One or two sentences describing what this project does and why you built it.</p>
       <div class="tags">
-        <span class="tag">Python</span>
+        <span class="tag python">Python</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/YOUR-USERNAME/repo-name" target="_blank">Code →</a>
+        <a href="https://github.com/shriyakulkarni/repo-name" target="_blank">Code →</a>
         <a href="#" target="_blank">Live Demo →</a>
       </div>
     </div>
 
-    <div class="card" data-tags="python">
+    <div class="card" data-tags="python" style="--pc:var(--python)">
+      <span class="card-icon">🐍</span>
       <h3>Another Python Project</h3>
       <p class="desc">Short description of what it does, key features, or the problem it solves.</p>
       <div class="tags">
-        <span class="tag">Python</span>
+        <span class="tag python">Python</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/YOUR-USERNAME/repo-name" target="_blank">Code →</a>
+        <a href="https://github.com/shriyakulkarni/repo-name" target="_blank">Code →</a>
       </div>
     </div>
 
-    <div class="card" data-tags="java">
+    <div class="card" data-tags="java" style="--pc:var(--java)">
+      <span class="card-icon">☕</span>
       <h3>Java Project</h3>
       <p class="desc">Placeholder description — replace with your own project details.</p>
       <div class="tags">
-        <span class="tag">Java</span>
+        <span class="tag java">Java</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/YOUR-USERNAME/repo-name" target="_blank">Code →</a>
+        <a href="https://github.com/shriyakulkarni/repo-name" target="_blank">Code →</a>
       </div>
     </div>
 
-    <div class="card" data-tags="javascript web">
+    <div class="card" data-tags="javascript web" style="--pc:var(--web)">
+      <span class="card-icon">🌐</span>
       <h3>Web App Project</h3>
       <p class="desc">Placeholder description — replace with your own project details.</p>
       <div class="tags">
-        <span class="tag">JavaScript</span>
-        <span class="tag">Web</span>
+        <span class="tag js">JavaScript</span>
+        <span class="tag web">Web</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/YOUR-USERNAME/repo-name" target="_blank">Code →</a>
+        <a href="https://github.com/shriyakulkarni/repo-name" target="_blank">Code →</a>
         <a href="#" target="_blank">Live Demo →</a>
       </div>
     </div>
 
-    <div class="card" data-tags="cpp">
+    <div class="card" data-tags="cpp" style="--pc:var(--cpp)">
+      <span class="card-icon">⚙️</span>
       <h3>C++ Project</h3>
       <p class="desc">Placeholder description — replace with your own project details.</p>
       <div class="tags">
-        <span class="tag">C++</span>
+        <span class="tag cpp">C++</span>
       </div>
       <div class="card-links">
-        <a href="https://github.com/YOUR-USERNAME/repo-name" target="_blank">Code →</a>
+        <a href="https://github.com/shriyakulkarni/repo-name" target="_blank">Code →</a>
       </div>
     </div>
 
@@ -262,9 +611,21 @@
   <p class="empty-msg" id="emptyMsg">No projects tagged with this yet.</p>
 </section>
 
-<footer>
+<section class="wrap" id="contact">
+  <div class="contact-card">
+    <h2>Let's connect</h2>
+    <p>I'm always learning and open to feedback, collaboration, or opportunities. Feel free to reach out.</p>
+    <div class="links">
+      <a class="primary" href="mailto:kulkarnishriya468@gmail.com">Email Me →</a>
+      <a class="ghost" href="https://github.com/shriyakulkarni" target="_blank">GitHub</a>
+      <a class="ghost" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
   <div class="wrap">
-    Built with plain HTML/CSS/JS · Hosted free on GitHub Pages
+    Built with HTML, CSS &amp; JavaScript · Hosted free on GitHub Pages
   </div>
 </footer>
 
